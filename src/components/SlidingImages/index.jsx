@@ -5,39 +5,47 @@ import Image from 'next/image';
 
 const slider1 = [
     {
-        color: "#e3e5e7",
-        src: "c2.jpg"
+        color: "transparent",
+        src: "24 Hrs_track_cover.jpg"
     },
     {
-        color: "#d6d7dc",
-        src: "decimal.jpg"
+        color: "transparent",
+        src: "Another Day_track_cover.jpg"
     },
     {
-        color: "#e3e3e3",
-        src: "funny.jpg"
+        color: "transparent",
+        src: "Pasta_track_cover.jpg"
     },
     {
-        color: "#21242b",
-        src: "google.jpg"
+        color: "transparent",
+        src: "Rise and Shine_track_cover.jpg"
+    },
+    {
+        color: "transparent",
+        src: "that guy_track_cover.jpg"
     }
 ]
 
 const slider2 = [
     {
-        color: "#d4e3ec",
-        src: "maven.jpg"
+        color: "transparent",
+        src: "that guy_track_cover.jpg"
     },
     {
-        color: "#e5e0e1",
-        src: "panda.jpg"
+        color: "transparent",
+        src: "Rise and Shine_track_cover.jpg"
     },
     {
-        color: "#d7d4cf",
-        src: "powell.jpg"
+        color: "transparent",
+        src: "Pasta_track_cover.jpg"
     },
     {
-        color: "#e1dad6",
-        src: "wix.jpg"
+        color: "transparent",
+        src: "Another Day_track_cover.jpg"
+    },
+    {
+        color: "transparent",
+        src: "24 Hrs_track_cover.jpg"
     }
 ]
 
@@ -64,6 +72,7 @@ export default function index() {
                                     fill={true}
                                     alt={"image"}
                                     src={`/images/${project.src}`}/>
+
                                 </div>
                             </div>
                         })

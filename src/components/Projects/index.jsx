@@ -4,29 +4,34 @@ import { useState, useEffect, useRef } from 'react';
 import Project from './components/project';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
-import Image from 'next/image';
 import Rounded from '../../common/RoundedButton';
+import CustomAudioPlayer from '../AudioPlayer'; // Import the custom audio player component
+
 
 const projects = [
   {
-    title: "C2 Montreal",
-    src: "c2montreal.png",
-    color: "#000000"
+    title: "The Fifth - Synth Funk",
+    audiosrc: "sounds/Raul Santing - The Fifth - Periode 1.wav",
+    color: "#000000",
+    subtitle: "School Project - Period 1"
   },
   {
-    title: "Office Studio",
-    src: "officestudio.png",
-    color: "#8C8C8C"
+    title: "A Little - Amapiano",
+    audiosrc: "sounds/alittle 114bpm @roelobeats.mp3",
+    color: "#8C8C8C",
+    subtitle: "Personal Portfolio - MAY 2024"
   },
   {
-    title: "Locomotive",
-    src: "locomotive.png",
-    color: "#EFE8D3"
+    title: "Beetjie - Amapiano",
+    audiosrc: "sounds/beetjie 114bpm @roelobeats.mp3",
+    color: "#EFE8D3",
+    subtitle: "Personal Portfolio - MAY 2024"
   },
   {
-    title: "Silencio",
-    src: "silencio.png",
-    color: "#706D63"
+    title: "Crazy For You- Amapiano",
+    audiosrc: "sounds/crazy for you 114bpm @roelobeats.mp3",
+    color: "#706D63",
+    subtitle: "Personal Portfolio - MAY 2024"
   }
 ]
 
@@ -36,9 +41,10 @@ const scaleAnimation = {
     closed: {scale: 0, x:"-50%", y:"-50%", transition: {duration: 0.4, ease: [0.32, 0, 0.67, 0]}}
 }
 
-export default function Home() {
+export default function Projects () {
 
   const [modal, setModal] = useState({active: false, index: 0})
+  const [currentAudio, setCurrentAudio] = useState(null); // State to hold the current audio source
   const { active, index } = modal;
   const modalContainer = useRef(null);
   const cursor = useRef(null);
@@ -71,44 +77,48 @@ export default function Home() {
     xMoveCursorLabel.current(x)
     yMoveCursorLabel.current(y)
   }
+
   const manageModal = (active, index, x, y) => {
     moveItems(x, y)
     setModal({active, index})
   }
+
+  const handleClick = (audiosrc) => {
+    console.log(audiosrc); // Log the project title to the console
+    setCurrentAudio(audiosrc); // Set the current audio source
+  }
+
+
 
   return (
   <main onMouseMove={(e) => {moveItems(e.clientX, e.clientY)}} className={styles.projects}>
     <div className={styles.body}>
       {
         projects.map( (project, index) => {
-          return <Project index={index} title={project.title} manageModal={manageModal} key={index}/>
+          return <Project 
+              index={index} 
+              title={project.title} 
+              subtitle={project.subtitle}
+              audiosrc={project.audiosrc}
+              manageModal={manageModal} 
+              onClick={() => handleClick(project.audiosrc)} // Pass the onClick handler
+              key={index}/>
         })
       }
     </div>
     <Rounded>
       <p>More work</p>
     </Rounded>
-    <>
-        <motion.div ref={modalContainer} variants={scaleAnimation} initial="initial" animate={active ? "enter" : "closed"} className={styles.modalContainer}>
-            <div style={{top: index * -100 + "%"}} className={styles.modalSlider}>
-            {
-                projects.map( (project, index) => {
-                const { src, color } = project
-                return <div className={styles.modal} style={{backgroundColor: color}} key={`modal_${index}`}>
-                    <Image 
-                    src={`/images/${src}`}
-                    width={300}
-                    height={0}
-                    alt="image"
-                    />
-                </div>
-                })
-            }
-            </div>
+    {currentAudio && <CustomAudioPlayer src={currentAudio} />} {/* Render the custom audio player */}
+        <motion.div 
+        ref={cursor} 
+        className={styles.cursor} 
+        variants={scaleAnimation} 
+        initial="initial" 
+        animate={active ? "enter" : "closed"}>
         </motion.div>
-        <motion.div ref={cursor} className={styles.cursor} variants={scaleAnimation} initial="initial" animate={active ? "enter" : "closed"}></motion.div>
-        <motion.div ref={cursorLabel} className={styles.cursorLabel} variants={scaleAnimation} initial="initial" animate={active ? "enter" : "closed"}>View</motion.div>
-    </>
+        <motion.div ref={cursorLabel} className={styles.cursorLabel} variants={scaleAnimation} initial="initial" animate={active ? "enter" : "closed"}>►</motion.div>
+
   </main>
   )
 }

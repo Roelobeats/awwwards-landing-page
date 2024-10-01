@@ -14,16 +14,17 @@
         left: -10vw;
         .project{
             width: 25%;
-            height: 20vw;
+            height: 22vw;
             display: flex;
             align-items: center;
             justify-content: center;
+
             .imageContainer{
                 position: relative;
                 width: 80%;
                 height: 80%;
                 img{
-                    object-fit: cover;
+                    object-fit: contain;
                 }
             }
         }

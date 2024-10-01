@@ -9,7 +9,7 @@
     width: 100%;
     font-weight: 300;
     box-sizing: border-box;
-    align-items: center;
+    align-items: center;    
     
     .logo{
         display: flex;
@@ -25,69 +25,60 @@
             white-space: nowrap;
             margin-left: 5px;
             transition: all 0.5s cubic-bezier(0.76, 0, 0.24, 1);
-            p{
-                position: relative;
-                transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
-                &:nth-of-type(2){
-                    padding-left: 0.3em;
-                }
-                &:nth-of-type(3){
-                    position: absolute;
-                    left: 120px;
-                    padding-left: 0.3em;
-                }
-            }
         }
         &:hover{
             .copyright{
                 transform: rotate(360deg);
             }
-            .name{
-                padding-right: 30px;
-                .codeBy{
-                    transform: translateX(-100%);
-                }
-                .dennis{
-                    transform: translateX(-65px);
-                }
-                .snellenberg{
-                    transform: translateX(-65px);
-                }
-            }
         }
     }
-    .nav{
+    .localtime {
         display: flex;
+        position: relative;
+        overflow: hidden;
+        white-space: nowrap;
+        flex-direction: column;
+        text-align: center;
         align-items: center;
-
-        .el{
+        .text {
+            font-weight: bold;
+            text-align: center;
+        }
+    }
+    .navUnderline{
+        display: flex;
+        div{
             display: flex;
-            flex-direction: column;
-            position: relative;
-            z-index: 1;
+            gap: 10px;
             padding: 15px;
-            cursor: pointer;
-            &:hover{
-                .indicator{
-                    transform: scale(1);
+            align-items: flex-end;
+            a{
+                margin: 0px;
+                padding: 2.5px;
+                cursor: pointer;
+            }
+            a{
+                &::after{
+                    content: "";
+                    width: 0%;
+                    height: 1px;
+                    background-color: white;
+                    display: block;
+                    margin-top: 2px;
+                    position: relative;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    transition: width 0.2s linear;
+                }
+                &:hover{
+                    &::after{
+                        width: 100%;
+                    }
                 }
             }
-            .indicator{
-                position: absolute;
-                width: 5px;
-                height: 5px;
-                top: 45px;
-                left: 50%;
-                background-color: white;
-                border-radius: 50%;
-                transform: scale(0) translateX(-50%);
-                transition: transform 0.2s cubic-bezier(0.76, 0, 0.24, 1);
-            }
         }
-        a{
-            cursor: pointer;
-        }
-    } 
+        
+    }
 }
 .headerButtonContainer{
     transform: scale(0);
@@ -146,4 +137,5 @@
         
     }
 }
+
 

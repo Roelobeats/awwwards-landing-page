@@ -3,8 +3,32 @@
     display: flex;
     height: 100vh;
     overflow: hidden;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;     /* Centers vertically */
 
     img{
+      object-fit: contain;
+      max-width: 40%; /* Ensure the image scales properly */
+      max-height: 40%; /* Ensure the image scales properly */
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 160px;
+    }
+
+    .background {
+      background-color:#999eff;
+      background-image:
+      radial-gradient(at 36% 92%, hsla(345,81%,76%,1) 0px, transparent 50%),
+      radial-gradient(at 32% 51%, hsla(53,77%,76%,1) 0px, transparent 50%),
+      radial-gradient(at 30% 53%, hsla(211,99%,75%,1) 0px, transparent 50%),
+      radial-gradient(at 25% 11%, hsla(130,61%,75%,1) 0px, transparent 50%),
+      radial-gradient(at 36% 56%, hsla(29,74%,77%,1) 0px, transparent 50%),
+      radial-gradient(at 83% 82%, hsla(38,71%,70%,1) 0px, transparent 50%),
+      radial-gradient(at 15% 35%, hsla(19,74%,60%,1) 0px, transparent 50%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'%3E%3C/rect%3E%3C/svg%3E");
+      height: 100vh;
+      width: 100vw;
       object-fit: cover;
     }
     
@@ -50,4 +74,6 @@
       }
     }
   }
+
+
   
