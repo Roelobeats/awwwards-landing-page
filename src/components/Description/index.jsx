@@ -3,7 +3,7 @@ import { useInView, motion } from 'framer-motion';
 import { useRef } from 'react';
 import { slideUp, opacity } from './animation';
 import Rounded from '../../common/RoundedButton';
-export default function index() {
+export default function Index() {
 
     const phrase = "Crafting music that fits any scene. Versatile in style, seamless in execution. Always ready to push boundaries and create something new.";
     const description = useRef(null);
